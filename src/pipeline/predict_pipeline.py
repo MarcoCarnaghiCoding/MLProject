@@ -29,8 +29,8 @@ class CustomData:
     def __init__(self,
                  gender: str,
                  race_ethnicity: str,
-                 parental_level_of_education,
-                 lunch:int,
+                 parental_level_of_education: str,
+                 lunch: int,
                  test_preparation_course: int,
                  reading_score: int,
                  writing_score: int):

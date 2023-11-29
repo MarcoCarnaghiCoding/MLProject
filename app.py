@@ -9,7 +9,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 
-from src.pipeline.predict_pipeline import CustomData, PredictPipeline
+#from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 #======================================================
 #               Sidebar
 #======================================================
@@ -23,34 +23,86 @@ def draw_all(
         """
     )
     
+    
 with st.sidebar:
     draw_all("sidebar")
 
 
     def main():
         st.title("BASIC MLOps Project")
-        menu = ["--Select--","Review Analysis","Stores Strengths and Weaknesses"]
-        choice = st.sidebar.selectbox("Choose your Analysis", menu)
-
-
-        if choice=="--Select--":
-            #folder_path = 'Streamlit2/TopicModellingStreamlit-main'
-            folder_path = '.'
-            st.image(folder_path + '/figures/indatalogo.jpg')
-
-            st.write("""
-                    
-                    This Natural Language Processing Based Web App was trained using 
-                    Google and Yelp datasets, which include reviews from various stores across the USA.
+        #menu = ["--Select--","Review Analysis","Stores Strengths and Weaknesses"]
+        #choice = st.sidebar.selectbox("Choose your Analysis", menu)
+        st.write("""
+                        This MLOps Project aims to be a practice of CICD pipeline Deployment in AWS Cloud Service
             """)
             
-            st.write("""
+        st.write("""                    
+                The objective of the model is to predict the Math score of a student given the following set of
+                    features:
                     
-                    This NLP web app is based on two main models:
-                    1. A BERT model for sentiment analysis, which identifies whether a review has a positive,
-                    negative, or neutral connotation.
-                    2. An LDA unsupervised model for topic modeling, which recognizes the presence of 10 topics in a review.
-            """)
+                    - gender : sex of students  -> (Male/female)
+                    - race/ethnicity : ethnicity of students -> (Group A, B,C, D,E)
+                    - parental level of education : parents' final education ->(bachelor's degree,some college,master's degree,associate's degree,high school)
+                    - lunch : having lunch before test (standard or free/reduced) 
+                    - test preparation course : complete or not complete before test
+                    - reading score
+                    - writing score
+                """)
+        
+        st.write("Let's choose your features!")
+        menu_gender = ["--Select--",
+                    "Male",
+                    "Female"
+                    ]
+        choice_gender = st.sidebar.selectbox("Choose your Gender", menu_gender)
+
+        menu_ethnicity = [   "--Select--",
+                            "Group A",
+                            "Group B",
+                            "Group C",
+                            "Group D",
+                            "Group E"
+                            ]
+        choice_ethnicity = st.sidebar.selectbox("Choose your Ethnicity", menu_ethnicity)
+
+        menu_parental = [   "--Select--",
+                            "Associate's degree",
+                            "Bachelor's degree",
+                            "High school",
+                            "Master's degree",
+                            "Some college"
+                            ]
+        choice_parental = st.sidebar.selectbox("Choose your Parents' final education", menu_parental)
+
+        menu_lunch = ["--Select--",
+                    "Standard",
+                    "Free"
+                    ]
+        choice_lunch = st.sidebar.selectbox("Choose your Lunch", menu_lunch)
+        
+        if choice_lunch == "Standard":
+            choice_lunch = 1
+        elif choice_lunch == "Free":
+            choice_lunch = 0
+
+        menu_test_preparation = [   "--Select--",
+                                    "Completed",
+                                    "Not Completed"
+                                    ]
+        choice_test_preparation = st.sidebar.selectbox("Choose your Preparation", menu_test_preparation)
+
+        if choice_test_preparation == "Completed":
+            choice_test_preparation = 1
+        elif choice_test_preparation == "Not Completed":
+            choice_test_preparation = 0
+
+
+
+        
+
+
+        
+            
 
 
 '''
@@ -63,3 +115,7 @@ print(result)
 return result
 
 '''
+
+
+if __name__ == '__main__':
+    main()
